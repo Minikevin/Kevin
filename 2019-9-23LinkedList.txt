@@ -1,0 +1,39 @@
+package com.gdgm.kyy;
+
+import java.util.LinkedList;
+
+public class LinkedListdemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//LinkedList 底层基于双向链表。查找元素效率低，删除/添加元素的效率高
+		LinkedList<String> nameLinkedList=new LinkedList<String>();
+		//队列：先进先出 offer()-poll()
+	/*	nameLinkedList.offer("kyy");
+		nameLinkedList.offer("Betty");
+		nameLinkedList.offer("Jack");
+		System.out.println(nameLinkedList.poll());
+		System.out.println(nameLinkedList.poll());
+		nameLinkedList.offer("Tom");
+		System.out.println(nameLinkedList.poll());
+		nameLinkedList.offer("Merry");
+		nameLinkedList.offer("Rose");
+		System.out.println(nameLinkedList.poll());
+		System.out.println(nameLinkedList.poll());
+		System.out.println(nameLinkedList.poll());*/
+		//堆栈：先进后出push()-pop()
+		nameLinkedList.push("kyy");
+		nameLinkedList.push("Betty");
+		nameLinkedList.push("Jack");
+		System.out.println(nameLinkedList.pop());
+		System.out.println(nameLinkedList.pop());
+		nameLinkedList.push("Tom");
+		System.out.println(nameLinkedList.pop());
+		nameLinkedList.push("Merry");
+		nameLinkedList.push("Rose");
+		System.out.println(nameLinkedList.pop());
+		System.out.println(nameLinkedList.pop());
+		System.out.println(nameLinkedList.pop());
+	}
+
+}

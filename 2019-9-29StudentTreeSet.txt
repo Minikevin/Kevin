@@ -1,0 +1,63 @@
+package com.kyy.gdgm;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+class Student implements Comparable<Student>{
+	double stuId;
+	String stuName;
+	public Student(int stuId, String stuName) {
+		super();
+		this.stuId = stuId;
+		this.stuName = stuName;
+	}
+	@Override
+	public String toString() {
+		return "学号=" + stuId + ", 姓名=" + stuName ;
+	}
+	
+	@Override
+	public int compareTo(Student stu) {
+		// TODO Auto-generated method stub
+		//如果当前对象的学号比所比对象学号大则返回正数，如果当前对象的学号比所比对象学号小则返回负数，如果当前对象的学号跟所比对象学号相等，则返回0；
+		if(this.stuId> stu.stuId) 
+			return 1;
+		else if(this.stuId< stu.stuId)
+		return -1;
+		else 
+			return 0;
+		//return this.stuId-stu.stuId;
+		//return this.stuName.compareTo(stu.stuName);
+	}
+	
+}
+public class StudentTreeSet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//TreeSet 中元素的类必须实现Comparable接口
+		//TreeSet<Student> sTreeSet=new TreeSet<Student>();
+		TreeSet<Student> sTreeSet=new TreeSet<Student>(new Comparator<Student>() {
+
+			@Override
+			public int compare(Student stu1, Student stu2) {
+				return stu1.stuName.compareTo(stu2.stuName);
+				//return stu1.stuName.length()-stu2.stuName.length();
+				// TODO Auto-generated method stub
+			
+			}
+		});//通过匿名内部类创建一个比较器对象
+		sTreeSet.add(new Student(1, "kyy"));
+		sTreeSet.add(new Student(5, "Tom"));
+		sTreeSet.add(new Student(11, "Rose"));
+		sTreeSet.add(new Student(3, "Betty"));
+		sTreeSet.add(new Student(7, "Jack"));
+		sTreeSet.add(new Student(27, "Merry"));
+		//在TreeSet中判断两个元素是否相等就是依据compareTo的返回值是否为0，与equals方法没有关系
+		sTreeSet.add(new Student(7, "Walle"));
+		System.out.println(sTreeSet);
+		
+		sTreeSet.remove(new Student(1, "kyy"));
+	}
+
+}

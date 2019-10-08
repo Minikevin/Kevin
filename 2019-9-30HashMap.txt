@@ -1,0 +1,59 @@
+package com.gdgm.kyy;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//1.创建HashMap集合对象，Map是双列集合，HashMap:无序
+		HashMap<Integer, String> stuHashMap=new HashMap<>();
+		//2.往stuHashMap添加元素
+		stuHashMap.put(1, "Kyy");
+		stuHashMap.put(6, "Tom");
+		stuHashMap.put(3, "Betty");
+		stuHashMap.put(11, "Rose");
+		stuHashMap.put(31, "Jack");
+		stuHashMap.put(4, "Merry");
+		System.out.println(stuHashMap);
+		stuHashMap.put(6, "Walle");//Map中的元素的键不可重复，当键相同时，新的值替换旧的值
+		System.out.println(stuHashMap);
+		Set<Integer> keys=stuHashMap.keySet();//keySet()获取键的单列集合
+		//3.遍历Map集合
+		Iterator<Integer> keyIt=keys.iterator();
+		while (keyIt.hasNext()) {
+			Integer key = (Integer) keyIt.next();
+			String value=stuHashMap.get(key);//get()获取键对应的值
+			System.out.print(key+":"+value+" ");
+		}
+		System.out.println();
+		
+		Set<Entry<Integer, String>> entries= stuHashMap.entrySet();
+		//entrySet()返回Entry对象的单列集合
+		Iterator<Entry<Integer, String>> entryIt=entries.iterator();
+		while (entryIt.hasNext()) {
+			Entry<Integer,String> entry = (Entry<Integer,String>) entryIt.next();
+			System.out.print(entry.getKey()+":"+entry.getValue()+" ");
+		}
+		System.out.println();
+		//4.修改元素
+		//stuHashMap.replace(1,"Lucky");
+		//System.out.println(stuHashMap);
+		
+		//5.判断
+		System.out.println(stuHashMap.size());
+		System.out.println(stuHashMap.containsKey(11));
+		System.out.println(stuHashMap.containsKey(12));
+		System.out.println(stuHashMap.containsValue("Kyy"));
+		
+		//6.删除
+		stuHashMap.remove(11);//只需要键对应就直接删除
+		System.out.println(stuHashMap);
+		//stuHashMap.remove(4,"merry");//必须键和值都匹配的元素才会被删除
+	}
+	
+
+}

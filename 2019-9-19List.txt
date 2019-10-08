@@ -1,0 +1,84 @@
+package com.gdgm.kyy;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//1.创建一个集合容器nameList;//List集合的特点：有序、可重复
+		List<String> nameList=new ArrayList<>();//通过泛型可以规范List集合中元素的类型
+		//2.往集合里面添加元素 List集合中的元素顺序按照元素添加的顺序保存在集合中
+		nameList.add("kyy");
+		nameList.add("Tom");
+		nameList.add("July");
+		nameList.add("Jack");
+		nameList.add("Betty");
+		nameList.add("Merry");
+		nameList.add("kyy");//List集合允许有两个或两个以上相同的元素
+		//3.遍历集合中的元素
+		for(int i=0;i<nameList.size();i++){
+			String str=(String) nameList.get(i);
+			System.out.print(str+" ");
+		}
+		System.out.println();
+		//3.1通过迭代器进行遍历集合
+		Iterator<String> myIterator=nameList.iterator();
+		while(myIterator.hasNext()){
+			String str=myIterator.next();
+			System.out.print(str+" ");
+		}
+		System.out.println();
+		System.out.println(nameList);
+		
+		/*//4.判断集合中是否有指定的元素
+		System.out.println(nameList.contains("Tom"));//true
+		System.out.println(nameList.contains("kyy"));//true
+		System.out.println(nameList.contains("KYY"));//false
+		//返回指定索引的元素
+		System.out.println(nameList.get(3));
+		//返回指定元素的索引
+		System.out.println(nameList.indexOf("Betty"));//4
+		System.out.println(nameList.indexOf("kyy"));//0
+		System.out.println(nameList.indexOf("Rose"));//-1
+*/		
+		//5.删除集合中的元素
+		/*nameList.remove("July");
+		nameList.remove("kyy");
+		nameList.remove(2);*/
+		//5.1通过遍历集合删除数据
+		/*for(int i=0;i<nameList.size();i++){
+			String str=nameList.get(i);
+			if(str.equals("kyy"))nameList.remove(i);
+		}
+		System.out.println(nameList);*/
+		//5.2通过迭代器删除数据
+		Iterator<String> delIter=nameList.iterator();
+		while(delIter.hasNext()){
+			String str=delIter.next();
+			//if(str.equals("kyy"))nameList.remove(str);//在迭代器遍历集合时不能用nameList.remove(str)
+			if(str.equals("kyy")) delIter.remove();
+		}
+		System.out.println(nameList);
+		//6修改元素的内容
+		nameList.set(1, "Jak");
+		System.out.println(nameList);
+		//7.集合中的元素排序
+		//通过匿名类定义比较器mycomaprator
+		Comparator<String> mycomaprator=new Comparator<String>() {
+
+			@Override
+			public int compare(String str1, String str2) {
+				// TODO Auto-generated method stub
+				return str1.compareTo(str2);
+				//返回值为正数代表str1〉str2，返回值为负数代表str1<str2，返回值为0代表str1==str2
+			}
+		};
+		nameList.sort(mycomaprator);//必须要定义一个比较器
+		System.out.println(nameList);
+	}
+
+}

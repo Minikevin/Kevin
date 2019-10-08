@@ -1,0 +1,48 @@
+package com.gdgm.kyy;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class SetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//1.定义一个Set集合:Set集合的特点：无序、且元素不可重复
+		Set<String> nameSet=new HashSet<>();
+		//2.往集合中添加元素
+		nameSet.add("Kyy");
+		nameSet.add("Betty");
+		nameSet.add("Jack");
+		nameSet.add("Rose");
+		nameSet.add("Merry");
+		nameSet.add("Tom");
+		System.out.println(nameSet);//保存在Set集合中的元素顺序与添加顺序可能不一致
+		nameSet.add("Kyy");
+		//3.遍历Set集合中的元素
+		/*Set里面没有get（）方法，无法直接遍历
+		 * for(int i=0;i<nameSet.size();i++){
+			String strname=nameSet.get();
+		}*/
+		Iterator<String> iterator=nameSet.iterator();
+		while (iterator.hasNext()) {
+			String string = (String) iterator.next();
+			System.out.print(string+" ");
+		}
+		System.out.println();
+		//3.1 通过foreach遍历集合
+		for (String str : nameSet) {
+			System.out.print(str+" ");
+		}
+		System.out.println();
+		//4.判断
+		System.out.println(nameSet.size());
+		System.out.println(nameSet.contains("Kyy"));
+		System.out.println(nameSet.contains("Walle"));
+		//5.删除指定元素
+		nameSet.remove("Tom");
+		System.out.println(nameSet);
+		
+	}
+
+}

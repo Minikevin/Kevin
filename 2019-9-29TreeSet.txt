@@ -1,0 +1,31 @@
+package com.kyy.gdgm;
+
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//TreeSet集合实现了自然排序,不能放重复的数据
+		TreeSet<Integer> ECStreeSet=new TreeSet<>();
+		ECStreeSet.add(45);
+		ECStreeSet.add(19);
+		ECStreeSet.add(9);
+		ECStreeSet.add(72);
+		ECStreeSet.add(67);
+		ECStreeSet.add(36);
+		ECStreeSet.add(92);
+		ECStreeSet.add(7);
+		ECStreeSet.add(55);
+		ECStreeSet.add(7);
+		System.out.println(ECStreeSet);
+		System.out.println(ECStreeSet.lower(45));
+		Iterator<Integer> iterator=ECStreeSet.iterator();
+		while (iterator.hasNext()) {
+			Integer integer = (Integer) iterator.next();
+			System.out.println(integer);
+		}
+	}
+
+}
