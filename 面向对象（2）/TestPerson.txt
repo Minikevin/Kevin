@@ -1,0 +1,20 @@
+package cn.gdgm.demoimpl;
+
+import cn.gdgm.projectdemo.Person;
+
+public class TestPerson {
+	//有main方法就是说我这个java类可以执行，main方法入口
+	public static void main(String[] args) {
+		//创建一个Person类的对象（实例）
+		Person p1;//定义变量基本格式：类型 变量名称；
+		p1 = new Person();
+		p1.name = "张三";
+		p1.age = 23;
+		p1.Sex = "男";
+		p1.height = 1.7;
+		
+		p1.getInfo();//输出是p1的值
+		
+		p1.sayHello();
+	}
+}

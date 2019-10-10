@@ -1,0 +1,15 @@
+package cn.gdgm.demoimpl;
+
+import cn.gdgm.projectdemo.Point;
+
+public class TestPoint {
+	public static void main(String[] args) {
+		//创建一个Point类的对象（实例）
+		Point p = new Point();
+		p.x = 3;
+		p.y = 2;
+		System.out.println("移动之前：("+p.x + "," + p.y+")");
+		
+		p.movePoint(5, 6);
+	}
+}

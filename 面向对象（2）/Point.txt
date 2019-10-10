@@ -1,0 +1,10 @@
+package cn.gdgm.projectdemo;
+
+public class Point {
+	public int x;
+	public int y;
+	
+	public void movePoint(int x,int y){
+		System.out.println("把点移动到坐标为:(" + x + " , "+y+")的位置");
+	}
+}

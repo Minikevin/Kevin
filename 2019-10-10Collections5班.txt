@@ -1,0 +1,32 @@
+package com.gdgm.kyy;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+
+public class CollectionsDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> testlist=new ArrayList<>();
+	/*	testlist.add("Kyy");
+		testlist.add("Tom");
+		testlist.add("Walle");
+		testlist.add("Betty");*/
+		 //public static <T> boolean addAll(Collection<? super T> c, T... elements)
+		//T... elements 可变参数
+		Collections.addAll(testlist, "Kyy","Tom","Walle","Betty","Rose");
+		System.out.println(testlist);
+		Collections.reverse(testlist);
+		System.out.println(testlist);
+		Collections.shuffle(testlist);
+		System.out.println(testlist);
+		Collections.replaceAll(testlist, "Tom", "Jack");
+		System.out.println(testlist);
+		Collections.swap(testlist, 1, 4);
+		System.out.println(testlist);
+		
+	}
+
+}

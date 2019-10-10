@@ -1,0 +1,15 @@
+package cn.gdgm.demoimpl;
+
+import cn.gdgm.projectdemo.MyDate;
+
+public class TestDate {
+	public static void main(String[] args) {
+		//创建MyDate类的对象
+		MyDate myDate = new MyDate();//myDate这种变量，我们又可以叫做 句柄
+		myDate.setYear(2018);
+		myDate.setMonth(10);
+		myDate.setDay(8);
+		System.out.println("myDate这个日期的月份：" + myDate.getMonth());
+		myDate.printDate();
+	}
+}
