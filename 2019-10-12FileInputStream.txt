@@ -1,0 +1,63 @@
+package com.gdgm.kyy;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+
+public class FileInputStreamDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		//readFileSlow();
+		readFileFast();
+	}
+
+	private static void readFileFast(){
+		FileInputStream fiStream=null;
+		try{
+		//1.建立一个字节流输入管道
+		fiStream=new FileInputStream("d:/kyy.txt");
+		//2.从管道中读取数据,一次读取一组字节数据放入字节数组，返回值为到的字节数目
+		byte[] buffer=new byte[5];
+		int len=fiStream.read(buffer);
+		while(len!=-1){
+			System.out.print(new String(buffer,0,len));
+			len=fiStream.read(buffer);
+		}
+		}
+		catch(FileNotFoundException e){
+			System.out.println("无法打开指定文件。");
+		}
+		catch(IOException e){
+			System.out.println("无法读取指定文件的内容。");
+			
+		}finally{
+			
+			try {
+				//3.关闭管道
+				if(fiStream!=null)fiStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("无法关闭输入流管道。");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private static void readFileSlow() throws IOException {
+		//1.建立一个字节流输入管道
+				FileInputStream fiStream=new FileInputStream("d:/kyy.txt");
+				//2.从管道中读取数据,一次读取一个字节放入变量b。
+				int b=fiStream.read();
+				//如果读到文件末尾，返回-1
+				while(b!=-1){
+					System.out.print((char)b);
+					b=fiStream.read();
+				}
+				//3.关闭管道
+				fiStream.close();
+		
+	}
+
+}
