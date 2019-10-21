@@ -1,0 +1,119 @@
+
+package com.gdgm.kyy;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CopyFileByStreamDemo {
+
+	public static void main(String[] args) throws IOException  {
+		// TODO Auto-generated method stub
+		String src="d:/hy.mp4";
+		String dest="kyyfolder/hycopy.mp4";
+		long starttime=System.currentTimeMillis();
+		//copyFileSlow(src,dest);//一次备份一个字节：花费478685毫秒
+		//copyFileFast(src,dest);//一次备份一组字节（缓冲区）：花费761毫秒
+		copyFileFast2(src,dest);//采用缓冲流方式备份文件花费3145
+		long endtime=System.currentTimeMillis();
+		System.out.println(endtime-starttime);
+		
+		
+		
+	}
+
+	private static void copyFileFast2(String src, String dest) throws IOException {
+		FileInputStream fis = new FileInputStream(src);
+		FileOutputStream fos = new FileOutputStream(dest);
+		//BufferedInputStream处理流（缓冲流）的参数是一个文件字节流对象
+		BufferedInputStream bis=new BufferedInputStream(fis);
+		BufferedOutputStream bos=new BufferedOutputStream(fos);
+		//程序直接从缓冲流里面进行读写操作
+		int len=bis.read();
+		while(len!=-1){
+			bos.write(len);
+			len=bis.read();
+		}
+		bis.close();
+		bos.close();
+	}
+
+	private static void copyFileFast(String src, String dest) {
+		FileInputStream fis=null;
+		FileOutputStream fos=null;
+		try {
+			//1.创建输入输出管道
+			fis = new FileInputStream(src);
+			fos = new FileOutputStream(dest);
+			byte[] buffer=new byte[1024];
+			int len=fis.read(buffer);
+			//2.copy数据，一次拷贝一组字节
+			while(len!=-1){
+				fos.write(buffer);
+				len=fis.read(buffer);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+		//3.关闭输入输出管道
+		try {
+			if(fis!=null)fis.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if(fos!=null)fos.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		
+	}
+
+	private static void copyFileSlow(String src, String dest) {
+		FileInputStream fis=null;
+		FileOutputStream fos=null;
+		try {
+			//1.创建输入输出管道
+			fis = new FileInputStream(src);
+			fos = new FileOutputStream(dest);
+			int b=fis.read();
+			//2.copy数据,一次拷贝一个字节
+			while(b!=-1){
+				fos.write(b);
+				b=fis.read();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+		//3.关闭输入输出管道
+		try {
+			if(fis!=null)fis.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if(fos!=null)fos.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		
+	}
+
+}

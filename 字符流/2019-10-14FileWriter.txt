@@ -1,0 +1,26 @@
+package com.gdgm.kyy;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
+public class FileWriterDemo {
+
+	public static void main(String[] args) throws IOException {
+		//1.打开一个字符输出管道
+		FileWriter fWriter=new FileWriter("kyyfolder/writer.txt");
+		//2.将字符写到文件中
+		fWriter.write(34567);
+		char[] cbuffer="你好，中国\n\r".toCharArray();
+		fWriter.write(cbuffer);
+		fWriter.write("我轻轻地来\n\r");
+		//如果缓冲区数据未满，必须手动将缓冲区数据写入文件。
+		fWriter.flush();
+		//3.关闭管道，当关闭管道时，即使缓冲区数据未满，系统会自动将缓冲区数据写入文件。
+		fWriter.close();
+		
+
+	}
+
+}
