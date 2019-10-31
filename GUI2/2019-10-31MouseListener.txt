@@ -1,0 +1,132 @@
+package com.gdgm.kyy;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+/*class MyMouseListener implements MouseListener{
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("mouseClicked");
+		switch (e.getButton()) {
+		case MouseEvent.BUTTON1:
+			System.out.println("点击了鼠标左键");
+			break;
+		case MouseEvent.BUTTON2:
+			System.out.println("点击了鼠标中间键");
+			break;
+		case MouseEvent.BUTTON3:
+			System.out.println("点击了鼠标右键");
+		default:
+			break;
+		}
+		System.out.println("X坐标："+e.getX()+";Y坐标："+e.getY());
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("mousePressed");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		System.out.println("mouseReleased");
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		System.out.println("mouseEntered");
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		System.out.println("mouseExited");
+	}
+	
+}*/
+class MouseFrame extends JFrame{
+	public MouseFrame() {
+		//定义一个窗口，设置位置、大小及可见
+				//为窗口添加窗口监听器，响应关闭窗口事件，停止程序
+				//1.创建事件源：mouseFrame
+				JFrame mouseFrame=new JFrame("鼠标监听器案例");
+				mouseFrame.setBounds(300,200, 400, 300);
+				mouseFrame.setVisible(true);
+				mouseFrame.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosing(WindowEvent e) {
+						System.exit(0);
+					}
+				});
+				/*//2.创建监听器：
+				MyMouseListener mouseListener=new MyMouseListener();
+				//3.将mouseListener鼠标监听器注册到事件源上
+				mouseFrame.addMouseListener(mouseListener);
+				*/
+				//创建监听器+注册监听器：采用匿名内部类创建匿名监听器
+				//当监听接口里面有多个方法时，java会为我们定义系统实现类实现监听接口：适配器
+				//使用系统的适配器创建匿名内部类，从而创建匿名监听器
+				mouseFrame.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						switch (e.getButton()) {
+						case MouseEvent.BUTTON1:
+							System.out.println("点击了鼠标左键");
+							break;
+						case MouseEvent.BUTTON2:
+							System.out.println("点击了鼠标中间键");
+							break;
+						case MouseEvent.BUTTON3:
+							System.out.println("点击了鼠标右键");
+						default:
+							break;
+						}
+						mouseFrame.setTitle("X坐标："+e.getX()+";Y坐标："+e.getY());
+						System.out.println("X坐标："+e.getX()+";Y坐标："+e.getY());
+					};
+				} );
+				/*mouseFrame.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseReleased(MouseEvent e) {}
+					
+					@Override
+					public void mousePressed(MouseEvent e) {}
+					
+					@Override
+					public void mouseExited(MouseEvent e) {}
+					
+					@Override
+					public void mouseEntered(MouseEvent e) {}
+					
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						switch (e.getButton()) {
+						case MouseEvent.BUTTON1:
+							System.out.println("点击了鼠标左键");
+							break;
+						case MouseEvent.BUTTON2:
+							System.out.println("点击了鼠标中间键");
+							break;
+						case MouseEvent.BUTTON3:
+							System.out.println("点击了鼠标右键");
+						default:
+							break;
+						}
+						System.out.println("X坐标："+e.getX()+";Y坐标："+e.getY());
+					}
+				});*/
+	}
+}
+public class MouseListenerDemo {
+
+	public static void main(String[] args) {
+		new MouseFrame();
+		
+		
+}
+
+}

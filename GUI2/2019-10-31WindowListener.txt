@@ -1,0 +1,54 @@
+package com.gdgm.kyy;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import javax.swing.JFrame;
+
+public class WindowListenerDemo {
+
+public static void main(String[] args) {
+	//1.创建事件源，frame为本案例中的事件源
+	JFrame frame=new JFrame("实现事件处理效果");
+	frame.setBounds(300, 200, 400, 300);
+	frame.setVisible(true);
+	/*//2.创建监听器
+	//WindowListener wListener=new WindowListener() ;
+	MyWindowAdapter wListener=new MyWindowAdapter();
+	//3.将监听器注册到事件源上
+	frame.addWindowListener(wListener);*/
+	//2.创建监听器+3.将监听器注册到事件源上:使用匿名内部类创建匿名监听器
+	frame.addWindowListener(new WindowAdapter(){
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		};
+	} );
+	/*frame.addWindowListener(new WindowListener() {
+		
+		@Override
+		public void windowOpened(WindowEvent e) {}
+		
+		@Override
+		public void windowIconified(WindowEvent e) {}
+		
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+		
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
+		
+		@Override
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+		
+		@Override
+		public void windowClosed(WindowEvent e) {}
+		
+		@Override
+		public void windowActivated(WindowEvent e) {}
+	});*/
+}
+
+}
+

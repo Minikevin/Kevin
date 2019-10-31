@@ -1,0 +1,46 @@
+package com.gdgm.kyy;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ChangeBackColorDemo {
+
+	public static void main(String[] args) {
+		JFrame chFrame=new JFrame("改变背景色");
+		chFrame.setBounds(300,200, 400, 300);
+		chFrame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		chFrame.setLayout(new FlowLayout());
+		//将中间容器变为透明
+		chFrame.getContentPane().setBackground(null);
+		JButton btn_red=new JButton("红色");
+		btn_red.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				chFrame.setBackground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				chFrame.setBackground(Color.white);
+			}
+		});
+		JButton btn_green=new JButton("绿色");
+		JButton btn_yellow=new JButton("黄色");
+		chFrame.add(btn_red);
+		chFrame.add(btn_green);
+		chFrame.add(btn_yellow);
+		chFrame.setVisible(true);
+	}
+
+}
