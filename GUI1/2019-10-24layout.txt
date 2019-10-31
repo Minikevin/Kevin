@@ -1,0 +1,31 @@
+package com.gdgm.kyy;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class LayoutDemo {
+
+	public static void main(String[] args) {
+		//JFrame默认布局方式为BorderLayout:将控件排列在东西南北中五个方位
+		JFrame frm_layout=new JFrame("布局容器");
+		JButton button1=new JButton("button1");
+		JButton button2=new JButton("button2");
+		JButton button3=new JButton("button3");
+		JButton button4=new JButton("button4");
+		JButton button5=new JButton("button5");
+		frm_layout.add(button1,BorderLayout.NORTH);
+		frm_layout.add(button2,BorderLayout.EAST);
+		frm_layout.add(button3,BorderLayout.CENTER);
+		frm_layout.add(button4,BorderLayout.WEST);
+		frm_layout.add(button5,BorderLayout.SOUTH);
+		
+		frm_layout.setVisible(true);
+		frm_layout.setBounds(300, 200, 300, 250);
+		frm_layout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+}
+ 

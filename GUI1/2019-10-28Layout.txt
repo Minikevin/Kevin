@@ -1,0 +1,55 @@
+package com.gdgm.kyy;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Layoutdemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//创建一个窗口，大小为400*300，位置在：x-300，y-200,标题为"布局案例"
+		//窗口是可见的，关闭窗口时同时停止程序
+		JFrame layoutFrame=new JFrame("布局案例");
+		layoutFrame.setBounds(300, 200, 400, 300);
+		layoutFrame.setVisible(true);
+		layoutFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setLayout（）改变窗口的布局方式，改变为流式布局FlowLayout
+		/*layoutFrame.setLayout(new FlowLayout());
+		JButton btn_1=new JButton("button1");
+		JButton btn_2=new JButton("button2");
+		JButton btn_3=new JButton("button3");
+		JButton btn_4=new JButton("button4");
+		JButton btn_5=new JButton("button5");
+		JButton btn_6=new JButton("button6");
+		JButton btn_7=new JButton("button7");
+		layoutFrame.add(btn_1);
+		layoutFrame.add(btn_2);
+		layoutFrame.add(btn_3);
+		layoutFrame.add(btn_4);
+		layoutFrame.add(btn_5);
+		layoutFrame.add(btn_6);
+		layoutFrame.add(btn_7);*/
+		//setLayout（）改变窗口的布局方式，改变为表格布局FlowLayout
+					
+				layoutFrame.setLayout(new GridLayout(2,4,10,5));
+				JButton btn_1=new JButton("button1");
+				JButton btn_2=new JButton("button2");
+				JButton btn_3=new JButton("button3");
+				JButton btn_4=new JButton("button4");
+				JButton btn_5=new JButton("button5");
+				JButton btn_6=new JButton("button6");
+				JButton btn_7=new JButton("button7");
+				layoutFrame.add(btn_1);
+				layoutFrame.add(btn_2);
+				layoutFrame.add(btn_3);
+				layoutFrame.add(btn_4);
+				layoutFrame.add(btn_5);
+				layoutFrame.add(btn_6);
+				layoutFrame.add(btn_7);
+	}
+
+}

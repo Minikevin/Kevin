@@ -1,0 +1,76 @@
+package com.gdgm.kyy;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import javax.swing.JFrame;
+//MyMyWindowAdapter继承了WindowAdapter（窗口适配器），WindowAdapter实现了WindowListener
+//所以MyMyWindowAdapter也就是实现了WindowListener，
+//所以MyWindowAdapter 就是一个窗口监听器实现类
+class MyWindowAdapter extends WindowAdapter{
+	@Override
+	public void windowClosing(WindowEvent e) {
+		System.exit(0);
+	}
+}
+class MyWindowListener implements WindowListener{
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		System.out.println("windowOpened-窗口打开了");
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		System.out.println("windowClosing-窗口正在关闭了");
+		System.exit(0);
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		System.out.println("windowClosed-窗口关闭完成了");
+		//System.exit(0);
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		System.out.println("windowIconified-窗口变成小图标，最小化");
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		System.out.println("windowDeiconified");
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		System.out.println("windowActivated");
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		System.out.println("windowDeactivated");
+		
+	}
+	
+}
+public class WindowListenerDemo {
+
+	public static void main(String[] args) {
+		//1.创建事件源，frame为本案例中的事件源
+		JFrame frame=new JFrame("实现事件处理效果");
+		frame.setBounds(300, 200, 400, 300);
+		frame.setVisible(true);
+		//2.创建监听器
+		MyWindowAdapter wListener=new MyWindowAdapter();
+		//3.将监听器注册到事件源上
+		frame.addWindowListener(wListener);
+	}
+
+}

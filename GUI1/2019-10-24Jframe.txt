@@ -1,0 +1,60 @@
+package com.gdgm.kyy;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class JFrameDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//创建了一个不可见窗口,1.也是一个窗口事件源
+		JFrame frame=new JFrame("测试窗口");
+		//设置窗口为可见
+		frame.setVisible(true);
+		//设置窗口的位置和大小
+		/*frame.setLocation(400, 200);
+		frame.setSize(300, 200);*/
+		frame.setBounds(400, 200, 300, 200);
+		//通过事件处理实现关闭窗口时同时停止程序
+		/*//2.创建一个Window监听器对象
+		WindowListener myWListener=new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		};
+		//3.将监听器注册到事件源上
+		frame.addWindowListener(myWListener);*/
+		//设置窗口属性实现关闭窗口时同时停止程序
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//System.exit(0);
+		frame.setLayout(new FlowLayout());
+		JButton btn_dialog=new JButton("点击我会弹出一个对话框");
+		btn_dialog.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			/*	//创建了非模式对话框
+				//JDialog dialog=new JDialog(frame,"一个测试对话框");
+				//创建了模式对话框
+				JDialog dialog=new JDialog(frame,"一个测试对话框",true);
+				dialog.setBounds(450, 270, 250, 100);
+				dialog.setVisible(true);*/
+				//创建消息对话框
+				JOptionPane.showMessageDialog(null, "我是一个消息对话框！","kyy",JOptionPane.WARNING_MESSAGE);
+			}
+		
+		});
+		frame.add(btn_dialog);
+	}
+
+}
