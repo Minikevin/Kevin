@@ -1,0 +1,319 @@
+第四题.
+package work.course;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+class MemuclassFiveFrame extends JFrame implements ActionListener {
+	JLabel sno, name, sex, birthday, year, month, day, label;
+	JPanel ln1, ln2, ln3, ln4, ln5, ln6, ln7;
+	JTextField input1, input2;
+	JRadioButton bn1, bn2;
+	JTextArea a;
+	JComboBox<String> cbb_name, cbb_name2, cbb_name3;
+	JCheckBox cb1, cb2, cb3;
+	JButton n;
+	ButtonGroup bg_size;
+
+	public MemuclassFiveFrame() {
+		this.setTitle("学生信息");
+
+		this.setBounds(300, 300, 500, 500);
+
+		sno = new JLabel("学号：");
+		name = new JLabel("姓名：");
+		sex = new JLabel("性别：");
+		birthday = new JLabel("出生日期");
+		year = new JLabel("年");
+		month = new JLabel("月");
+		day = new JLabel("日");
+		label = new JLabel("本程序由18软件五班林家豪设计开发", JLabel.RIGHT);
+		label.setBackground(Color.yellow);
+		Font sFont = new Font("宋体", Font.BOLD, 13);
+		label.setOpaque(true);
+		label.setFont(sFont);
+
+		bg_size = new ButtonGroup();
+
+		// 创建一个文本域
+		a = new JTextArea(10, 10);
+
+		// 创建两个文本框
+		input1 = new JTextField(20);
+		input2 = new JTextField(20);
+
+		bn1 = new JRadioButton("男");
+		bn2 = new JRadioButton("女");
+		cbb_name = new JComboBox<String>();
+		for (int i = 1999; i <= 2019; i++) {
+			cbb_name.addItem("" + i);
+		}
+		cbb_name2 = new JComboBox<String>();
+		for (int i = 1; i <= 12; i++) {
+			cbb_name2.addItem("" + i);
+		}
+		cbb_name3 = new JComboBox<String>();
+		for (int i = 1; i <= 31; i++) {
+			cbb_name3.addItem("" + i);
+		}
+		cb1 = new JCheckBox("唱歌");
+		cb1.setBackground(null);
+
+		cb2 = new JCheckBox("跳舞");
+		cb2.setBackground(null);
+
+		cb3 = new JCheckBox("运动");
+		cb3.setBackground(null);
+
+		// 添加按钮
+		n = new JButton("录入数据");
+		n.addActionListener(this);
+		ln1 = new JPanel();
+		ln2 = new JPanel();
+		ln3 = new JPanel();
+		ln4 = new JPanel();
+		ln5 = new JPanel();
+		ln6 = new JPanel();
+		ln7 = new JPanel();
+
+		// 改布局方式并且添加一系列的组件
+		ln1.setLayout(new GridLayout(6, 1));
+		ln2.add(sno);
+		ln2.add(input1);
+		ln3.add(name);
+		ln3.add(input2);
+		ln4.add(sex);
+		ln4.add(bn1);
+		ln4.add(bn2);
+		ln5.add(birthday);
+		ln5.add(cbb_name);
+		ln5.add(year);
+		ln5.add(cbb_name2);
+		ln5.add(month);
+		ln5.add(cbb_name3);
+		ln5.add(day);
+		ln6.add(cb1);
+		ln6.add(cb2);
+		ln6.add(cb3);
+
+		bg_size.add(bn1);
+		bg_size.add(bn2);
+		ln1.add(ln2);
+		ln1.add(ln3);
+		ln1.add(ln4);
+		ln1.add(ln5);
+		ln1.add(ln6);
+		ln1.add(n);
+
+		this.add(ln1, BorderLayout.NORTH);
+		this.add(a, BorderLayout.CENTER);
+		this.add(label, BorderLayout.SOUTH);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
+	
+	 
+	// 重写方法
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		a.append("学号：" + input1.getText() + "\n");
+		input1.setText("");
+		a.append("姓名：" + input2.getText() + "\n");
+		input2.setText("");
+		if (bn1.isSelected()) {
+			a.append("性别：" + bn1.getText() + "\n");
+		}
+		if (bn2.isSelected()) {
+			a.append("性别：" + bn2.getText() + "\n");
+		}
+		String item = (String) cbb_name.getSelectedItem();
+		String item1 = (String) cbb_name2.getSelectedItem();
+		String item2 = (String) cbb_name3.getSelectedItem();
+		a.append("出生日期：" + item + " " + item1 + " " + item2 + "\n");
+
+		if (cb1.isSelected()) {
+			a.append("爱好：" + cb1.getText() + " ");
+		}
+		if (cb2.isSelected()) {
+			a.append(cb2.getText() + " ");
+		}
+		if (cb3.isSelected()) {
+			a.append(cb3.getText());
+		}
+	}
+}
+
+public class Task4 {
+
+	public static void main(String[] args) {
+		new MemuclassFiveFrame();
+	}
+}
+
+第五题.
+package work.course;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingConstants;
+
+class Memu5banFrame extends JFrame implements ActionListener {
+	JLabel lb_text;
+	JMenuItem mi_about;
+	JMenuItem mi_exit;
+	JMenuItem mi_red, mi_blue, mi_black, mi_green, mi_bold, mi_italic;
+
+	public Memu5banFrame() {
+		this.setTitle("菜单窗口");
+		this.setBounds(300, 200, 400, 300);
+		lb_text = new JLabel("18软5班，通过菜单项可以改变我的颜色和字形。", JLabel.CENTER);
+		lb_text.setFont(new Font("宋体", Font.PLAIN, 14));
+		this.add(lb_text);
+
+		// 创建菜单栏，一个窗口只能有一个菜单栏
+		JMenuBar mBar = new JMenuBar();
+		// 创建菜单组件，菜单可以有多级菜单
+		JMenu mn_file = new JMenu("文件");
+		JMenu mn_style = new JMenu("样式");
+		
+		// 创建菜单项
+		mi_about = new JMenuItem("关于..");
+		mi_about.addActionListener(this);
+		mi_exit = new JMenuItem("退出");
+		mi_exit.addActionListener(this);
+
+		// 创建菜单组件
+		JMenu mn_color = new JMenu("颜色");
+		JMenu mn_font = new JMenu("字体");
+		
+		//对四个菜单项进行模式修改
+		Icon cn_red = new ImageIcon("e:\\红色.jpg");
+		mi_red = new JMenuItem("红色", cn_red);
+		mi_red.setForeground(Color.red);
+		mi_red.addActionListener(this);
+
+		Icon cn_bule = new ImageIcon("e:\\蓝色.jpg");
+		mi_blue = new JMenuItem("蓝色", cn_bule);
+		mi_blue.setForeground(Color.BLUE);
+		mi_blue.addActionListener(this);
+
+		Icon cn_black = new ImageIcon("e:\\黑色.jpg");
+		mi_black = new JMenuItem("黑色", cn_black);
+		mi_black.setForeground(Color.black);
+		mi_black.addActionListener(this);
+
+		Icon cn_green = new ImageIcon("e:\\绿色.jpg");
+		mi_green = new JMenuItem("绿色", cn_green);
+		mi_green.setForeground(Color.green);
+		mi_green.addActionListener(this);
+		
+		
+		//添加菜单项并把监听器注册上
+		mi_bold = new JMenuItem("粗体");
+		mi_bold.addActionListener(this);
+		mi_italic = new JMenuItem("斜体");
+		mi_italic.addActionListener(this);
+
+		// 将菜单项添加到菜单上
+		mn_color.add(mi_red);
+		mn_color.add(mi_blue);
+		mn_color.addSeparator();
+		mn_color.insert(mi_black, 0);
+		mn_color.add(mi_green);
+		mn_font.add(mi_bold);
+		mn_font.add(mi_italic);
+
+		mn_file.add(mi_about);
+		mn_file.add(mi_exit);
+		
+		// 将二级菜单添加到一级菜单上
+		mn_style.add(mn_color);
+		mn_style.add(mn_font);
+
+		// 将菜单添加到菜单栏上
+		mBar.add(mn_file);
+		mBar.add(mn_style);
+
+		// 将菜单栏添加窗口
+		this.setJMenuBar(mBar);
+		this.setVisible(true);
+
+	}
+	
+	
+	//重写监听器的方法
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mi_about) {
+			JOptionPane.showMessageDialog(null, "此程序由18软件5班林家豪开发设计。");
+		}
+		if (e.getSource() == mi_exit) {
+			System.exit(0);
+		}
+		if (e.getSource() == mi_blue) {
+			lb_text.setForeground(Color.BLUE);
+		}
+		if (e.getSource() == mi_red) {
+			lb_text.setForeground(Color.red);
+		}
+		if (e.getSource() == mi_black) {
+			lb_text.setForeground(Color.black);
+		}
+		if (e.getSource() == mi_green) {
+			lb_text.setForeground(Color.green);
+		}
+		if (e.getSource() == mi_bold) {
+			Font font = new Font("粗体", Font.BOLD, 14);
+			lb_text.setFont(font);
+		}
+		if (e.getSource() == mi_italic) {
+			Font font1 = new Font("斜体", Font.ITALIC, 14);
+			lb_text.setFont(font1);
+		}
+	}
+}
+
+public class Task5 {
+
+	public static void main(String[] args) {
+		new Memu5banFrame();
+	}
+}

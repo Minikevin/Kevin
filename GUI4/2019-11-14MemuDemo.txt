@@ -1,0 +1,91 @@
+package com.gdgm.kyy;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingConstants;
+
+class Memu5banFrame extends JFrame implements ActionListener{
+	JLabel lb_text;
+	JMenuItem mi_about;
+	JMenuItem mi_exit;
+	public Memu5banFrame() {
+		this.setTitle("5班菜单窗口");
+		this.setBounds(300, 200, 400, 300);
+		lb_text=new JLabel("18软5班，通过菜单项可以改变我的颜色和字形。",JLabel.CENTER);
+		lb_text.setFont(new Font("宋体",Font.PLAIN,14));
+		this.add(lb_text);
+		
+		//创建菜单栏，一个窗口只能有一个菜单栏
+		JMenuBar mBar=new JMenuBar();
+		//创建菜单，菜单可以有多级菜单
+		JMenu mn_file=new JMenu("文件");
+		JMenu mn_style=new JMenu("样式");
+		//创建菜单项
+		 mi_about=new JMenuItem("关于..");
+		 mi_about.addActionListener(this);
+		 mi_exit=new JMenuItem("退出");
+		 mi_exit.addActionListener(this);
+		
+		JMenu mn_color=new JMenu("颜色");
+		
+		Icon cn_red= new ImageIcon("src/com/gdgm/kyy/source/red.png");
+		JMenuItem mi_red=new JMenuItem("红色",cn_red);
+		mi_red.setForeground(Color.red);
+
+		JMenuItem mi_blue=new JMenuItem("蓝色");
+		mi_blue.setForeground(Color.BLUE);
+		JMenuItem mi_black=new JMenuItem("黑色");
+		JMenuItem mi_green=new JMenuItem("绿色");
+		
+		//将菜单项添加到菜单上
+		mn_color.add(mi_red);
+		mn_color.add(mi_blue);
+		mn_color.addSeparator();
+		mn_color.insert(mi_black, 0);
+		mn_color.add(mi_green);
+		
+		mn_file.add(mi_about);
+		mn_file.add(mi_exit);
+		//将二级菜单添加到一级菜单上
+		mn_style.add(mn_color);
+		
+		//将菜单添加到菜单栏上
+		mBar.add(mn_file);
+		mBar.add(mn_style);
+		
+		//将菜单栏添加窗口
+		this.setJMenuBar(mBar);
+		this.setVisible(true);
+	
+}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==mi_about){
+			JOptionPane.showMessageDialog(null, "此程序由18软件5班XXX开发设计。");
+		}
+		if(e.getSource()==mi_exit){
+			System.exit(0);
+		}
+	}
+}
+public class Memu5banDemo {
+
+	public static void main(String[] args) {
+		new Memu5banFrame();
+	}
+
+}
